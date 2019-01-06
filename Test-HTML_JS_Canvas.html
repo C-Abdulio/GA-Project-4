@@ -9,16 +9,17 @@
 
   <style type= "text/css">
     canvas{
-      border: solid black 3px;
-      background-color: white;
+      border: solid black 3px; /*Border for the canvas*/
+      background-color: white; /*Background color for canvas*/
     }
   </style>
 
 </head>
 <body>
-  <canvas id = "art" width = "800" height = "500" ></canvas>
+  <canvas id = "art" width = "800" height = "500" ></canvas> <!--The screen in which users draw things -->
   <script type = "text/javascript">
     var size = prompt('choose your brush size'); //Is this necessary?
+    //Can we create a function that increases or decreses size by 5
     var md = false;
     var canvas = document.getElementById('art');
     canvas.addEventListener('mousedown', down);
@@ -37,7 +38,7 @@
       md = false;
       canvas.style.cursor = "default";
     }
-    function getMousePos(canvas, evt){
+    function getMousePos(canvas, evt){//to find out the position of the cursor
       var rect = canvas.getBoundingClientRect();
       return{
         x:evt.clientX - rect.left,
@@ -50,8 +51,13 @@
         canvas.style.cursor="pointer";
         context.fillRect(posx, posy, size, size);
       }
+      // function changeColor(){
+      //   var context = canvas.getContext('2d');
+      //   context.style.color = "red";
+      // }
     }
   </script>
   <button onclick="window.location.reload()">reset</button>
+  <!-- <button onclick="changeColor()">change color</button> -->
 </body>
 </html>
