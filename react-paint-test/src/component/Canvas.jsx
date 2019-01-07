@@ -83,14 +83,14 @@ export default class Canvas extends Component{
     sizeChange(){
       var size = this.state.currentSize;
       switch(size){
-        case 10:// I would like o nthe change to this case...
-        return 'medium';// that this.ctx.lineWidth equals to THIS integer
-        case 20:
-        return 'large';
-        case 30:
-        return 'x-large';
+        case 'medium':// I would like o nthe change to this case...
+        return size = 10;// that this.ctx.lineWidth equals to THIS integer
+        case 'large':
+        return 20;
+        case 'x-large':
+        return 30;
         default:
-        return 'small';
+        return 5;
       }
     }
 

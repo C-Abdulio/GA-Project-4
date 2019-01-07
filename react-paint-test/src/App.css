@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color:rgba(201, 70, 107, 1);
 }
 
 canvas {
@@ -26,6 +27,7 @@ canvas {
 
 #white{
   font-weight: bold;
+  background-color:white;
 }
 
 #pink{
