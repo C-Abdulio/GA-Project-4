@@ -111,6 +111,16 @@ export default class Canvas extends Component{
         return `#FF0000`;
         case 'orange':
         return `#FF6600`;
+        case 'yellow':
+        return `#FF0`;
+        case 'green':
+        return `#88FF00`;
+        case 'teal':
+        return `#28DDCC`;
+        case 'blue':
+        return `#0000FF`;
+        case 'violet':
+        return `#aa00FF`
         default:
         return `#FFFFFF`;
       }
