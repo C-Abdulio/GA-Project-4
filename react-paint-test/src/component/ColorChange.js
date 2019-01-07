@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function ColorChange(){
+export default function ColorChange(props){
   return(
     <div>
-      <button onClick = >PINK</button>
+      <button onClick = {() => props.newColor('pink')}>PINK</button>
     </div>
   )
 }

@@ -30,3 +30,8 @@
     transform: rotate(360deg);
   }
 }
+
+.buttons{
+  display: flex;
+  flex-flow: row center;
+}
