@@ -150,6 +150,7 @@ export default class Canvas extends Component{
           <ColorChange newColor = {this.setColor} />
           <SizeChange newSize = {this.setSize} />
           </div>
+          <button onclick="window.location.reload()">reset</button>{/*this is supposed to reset. doesn't work*/}
       </div>
 
     );
