@@ -46,6 +46,6 @@ class ArtworksController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def artwork_params
-      params.require(:artwork).permit(:title, :username, :resources)
+      params.require(:artwork).permit(:title, :resources)
     end
 end

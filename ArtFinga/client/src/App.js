@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import Canvas from './component/Canvas';
+import NavBar from './component/NavBar';
+import Footer from './component/Footer'
 // import Welcome from './component/Welcome';
-// import ColorChange from './component/ColorChange';
+import axios from 'axios';
 
 class App extends Component {
 constructor(props){
@@ -14,14 +16,24 @@ constructor(props){
   // this.setView = this.setView.bind(this)
 }
 
+//call axios to GET the array of images
+const resp = async axios.get
+//call axios to GET one images
+
+//
+
 
 
 // getView(view){
 //   switch(this.state.currentView){
-//     case "canvas":
-//     return <Canvas />
+//     case "gallery":
+//     return <Gallery />;
+//     case "login":
+//     return <Login />;
+//     case "userPage":
+//     return <UserPage />;
 //     default:
-//     return <Welcome />;
+//     return <Canvas />;
 //   }
 // }
 // setView(view){
@@ -33,10 +45,9 @@ constructor(props){
   render() {
     return (
       <div className="App">
-          <Canvas/>
-        {/*<button onClick= {this.setView.bind("canvas")}>Activate Canvas</button>
-        {this.getView()}*/}
-
+          <NavBar handleChangeView = {this.setView}/>
+          <Canvas />
+          <Footer />
       </div>
     );
   }
