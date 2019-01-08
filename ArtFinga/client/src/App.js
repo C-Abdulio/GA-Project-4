@@ -4,6 +4,8 @@ import Canvas from './component/Canvas';
 import NavBar from './component/NavBar';
 import Footer from './component/Footer'
 // import Welcome from './component/Welcome';
+import Gallery from './component/Gallery';
+import UserPage from './component/UserPage';
 import axios from 'axios';
 
 class App extends Component {
@@ -13,40 +15,39 @@ constructor(props){
     currentView: " "
 
   }
-  // this.setView = this.setView.bind(this)
+  this.setView = this.setView.bind(this)
 }
 
 //call axios to GET the array of images
-const resp = async axios.get
+// const resp = async axios.get
 //call axios to GET one images
 
 //
 
 
 
-// getView(view){
-//   switch(this.state.currentView){
-//     case "gallery":
-//     return <Gallery />;
-//     case "login":
-//     return <Login />;
-//     case "userPage":
-//     return <UserPage />;
-//     default:
-//     return <Canvas />;
-//   }
-// }
-// setView(view){
-//   this.setState({
-//     currentView: view
-//   })
-// }
+getView(){
+  const view = this.state.currentView;
+  switch(view){
+    case "gallery":
+    return <Gallery />;
+    case "userPage":
+    return <UserPage />;
+    default:
+    return <Canvas />;
+  }
+}
+setView(view){
+  this.setState({
+    currentView: view
+  });
+}
 
   render() {
     return (
       <div className="App">
           <NavBar handleChangeView = {this.setView}/>
-          <Canvas />
+          {this.getView()}
           <Footer />
       </div>
     );

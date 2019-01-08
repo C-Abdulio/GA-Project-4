@@ -11,7 +11,7 @@ export default function NavBar(props){
       <h3>GALLERY</h3>
       </div>
 
-      <div className="navBtns" onClick = {() => props.handleChangeView('login')}>
+      <div className="navBtns" onClick = {() => props.handleChangeView('userPage')}>
       <h3>LOGIN</h3>
       </div>
       {/*When the user is logged in, switch LOGIN to USERPAGE*/}
