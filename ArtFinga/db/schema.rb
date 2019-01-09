@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2019_01_07_230452) do
 
   create_table "artworks", force: :cascade do |t|
     t.string "title"
+    t.string "img_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"

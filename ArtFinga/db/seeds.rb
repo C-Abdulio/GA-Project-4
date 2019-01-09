@@ -25,20 +25,32 @@ users = User.create([ #this posts a new user (or a bulk of users)
   }
 ])
 
-users[0].artworks.create(title:'https://s3.us-east-2.amazonaws.com/active-storage-artfinga-images/canvastestpic.png')
-users[1].artworks.create(title: 'fnsadlkdaslkdas')
-artwork1 = Artwork.create(title: 'test')
+users[0].artworks.create(
+  title: 'kirby',
+img_url: 'https://s3.us-east-2.amazonaws.com/active-storage-artfinga-images/canvastestpic.png'
+)
+users[1].artworks.create(
+  title: 'Phaser',
+  img_url: 'http://phaser.io/content/tutorials/making-your-first-phaser-3-game/tutorial_header.png'
+)
+artwork1 = Artwork.create(
+  title: 'bloohbloghlogf',
+img_url: 'https://i.4cdn.org/co/1546198971801.png'
+)
 users[2].artworks << artwork1
 
 # artworks = Artwork.create([
 #   {
-#     title: 'https://s3.us-east-2.amazonaws.com/active-storage-artfinga-images/canvastestpic.png',
+#     title: 'kirby',
+#     img_url: 'https://s3.us-east-2.amazonaws.com/active-storage-artfinga-images/canvastestpic.png'
 #
 #   },
 #   {
-#     title: 'https://s3.us-east-2.amazonaws.com/active-storage-artfinga-images/20190104_202905.jpg'
+#     title: 'Phaser',
+#     img_url: 'http://phaser.io/content/tutorials/making-your-first-phaser-3-game/tutorial_header.png'
 #   },
 #   {
-#     title: 'bloohbloghlogf'
+#     title: 'bloohbloghlogf',
+#     img_url: 'https://i.4cdn.org/co/1546198971801.png'
 #   }
 # ])
