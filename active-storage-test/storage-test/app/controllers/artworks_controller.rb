@@ -4,13 +4,13 @@ class ArtworksController < ApplicationController
   # GET /artworks
   def index
     @artworks = Artwork.all
-
     render json: @artworks
   end
 
   # GET /artworks/1
   def show
-    render json: @artwork
+    puts url_for(@artwork.image)
+    render json: @artwork.attributes.merge(image_url: url_for(@artwork.image))
   end
 
   # POST /artworks
@@ -48,13 +48,12 @@ class ArtworksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_artwork
-      @artwork = Artwork.find(params[:id])
+      @artwork = Artwork.find(params[:id])#wen u go into the database, grab image and take wit u
     end
 
     # Only allow a trusted parameter "white list" through.
     def artwork_params
-      params.require(:artwork).permit(:image, :title)
-      @artwork.image.attach(params[:image])
+      params.permit(:image, :title)
     end
 
 end
