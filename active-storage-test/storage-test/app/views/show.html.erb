@@ -1,0 +1,5 @@
+<%@artworks.files.each do |file| %>
+  <%= image_tag file.preview(resize_to_limit: [100, 100]) %>
+
+  <div style="background-image: url(<%= rails_blob_url(event.featured_image) %>)"></div>
+<% end %>
