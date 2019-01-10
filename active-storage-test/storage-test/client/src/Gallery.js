@@ -5,8 +5,7 @@ export default function Gallery(props){
     <div>
       {props.index.map(pic => (
         <div key={pic.id} className="galleryPic">
-          <p>{pic.image}</p>
-          <img src={pic.image}/>
+          <img src={pic.image_url} alt={pic.title}/>
           <h2>{pic.title}</h2>
         </div>
       ))}

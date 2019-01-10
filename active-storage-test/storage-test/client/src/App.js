@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
 import Gallery from './Gallery.js';
@@ -13,10 +12,9 @@ class App extends Component {
   }
 
   async fetchData(){
-    debugger;
     try{
-      const PORT = "http://localhost:3001"
-      const resp = await axios(`${PORT}/artworks`);
+      // const PORT = "http://localhost:3000"
+      const resp = await axios(`/artworks`);
       const list = resp.data;
       this.setState({
         imgData:list
