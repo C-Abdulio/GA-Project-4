@@ -32,7 +32,7 @@ componentDidMount(){
   render() {
     return (
       <div className="App">
-
+        <
         <Gallery index = {this.state.imgData}/>
       </div>
     );
