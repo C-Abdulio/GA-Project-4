@@ -4,13 +4,13 @@ class ArtworksController < ApplicationController
   # GET /artworks
   def index
     @artworks = Artwork.all
-    render json: @artworks
+    render json: @artworks.map{ |artwork| artwork.attributes.merge(image_url: url_for(artwork.image))}
   end
 
   # GET /artworks/1
   def show
     puts url_for(@artwork.image)
-    render json: @artwork.attributes.merge(image_url: url_for(@artwork.image))
+    render json: @artwork.attributes.merge(image_url: url_for(@artwork.image)) #
   end
 
   # POST /artworks
