@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Gallery from './Gallery';
+import Gallery from './Gallery/index.js';
 
 export default class UserPage extends Component{
   render(){

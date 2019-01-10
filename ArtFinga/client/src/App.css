@@ -1,12 +1,27 @@
 .App {
   text-align: center;
   background-color:rgba(201, 70, 107, 1);
+  background-size: cover;
+  width:auto;
+  height:100%;
 }
 
 canvas {
   border: solid 2px black;
 }
 
+nav{
+  display:flex;
+  justify-content: space-between;
+  padding:10px;
+  color: #FFEEEE;
+}
+
+hr{
+  width:70rem;
+  margin:10px auto;
+}
+/*//// The Drawing Tools for the Canvas */
 .colorNav {
   display:flex;
   flex-direction: row;
@@ -18,20 +33,39 @@ canvas {
   flex-flow: row center;
   justify-content: space-around;
   border-radius: 100px;
-  width:30px;
+  width:10px;
   height:10px;
   padding:20px;
+  margin:auto 5px;
   border: solid black 1px;
-  cursor: crosshair;
+  cursor: auto;
 }
 
-#white{
+.colorBtn p{
   font-weight: bold;
+  margin-top: 5px;
+  text-overflow: ellipsis;
+  display:none;
+}
+
+.colorBtn:hover{
+  width:20px;
+  padding:30px;
+  transition: 0.1s;
+}
+
+.colorBtn p:hover{
+  display:block;
+}
+
+.colorNav #white{
+  color:black;
   background-color:white;
 }
 
 #pink{
   background-color:#EE92C2;
+  color:red;
 }
 
 #red{
@@ -42,22 +76,32 @@ canvas {
   background-color:#FF6600;
 }
 #yellow{
+  color:orange;
   background-color:#FF0;
 }
 #green{
+  color:darkgreen;
   background-color:#88FF00;
 }
 #teal{
+  color:blue;
   background-color:#28DDCC;
 }
 #blue{
   background-color:#0000FF;
 }
 #violet {
-  background-color: #aa00FF;
+  background-color: #BB00FF;
+  color:#550088
 }
 #black{
   background-color:#000;
   color:white;
-  font-weight:bold;
+
 }
+
+  /*///The Gallery -Public and Private*/
+
+  .gallery{
+
+  }

@@ -18,7 +18,7 @@ class ArtworksController < ApplicationController
     @artwork = Artwork.new(artwork_params)
 
     if @artwork.save
-      render json: @artwork, status: :created, location: @artwork
+      render json: @artwork.attributes.merge(image_url: url_for(@artwork.image)), status: :created, location: @artwork
     else
       render json: @artwork.errors, status: :unprocessable_entity
     end
@@ -28,6 +28,7 @@ class ArtworksController < ApplicationController
   def update
     if @artwork.update(artwork_params)
       render json: @artwork
+
     else
       render json: @artwork.errors, status: :unprocessable_entity
     end
@@ -46,6 +47,6 @@ class ArtworksController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def artwork_params
-      params.require(:artwork).permit(:title, :img_url, :resources)
+      params.permit(:title, :image)
     end
 end

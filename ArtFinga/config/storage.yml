@@ -10,7 +10,7 @@ local:
 # amazon:
 #   service: S3
 #   access_key_id: <%= ENV['AWS ACCESS KEY_ID'] %>
-#   secret_access_key: <%= EWS['AWS SECRET ACCESS KEY'] %>
+#   secret_access_key: <%= ENV['AWS SECRET ACCESS KEY'] %>
 #   region: us-east-1
 #   bucket: ENV ['AWS_BUCKET']
 

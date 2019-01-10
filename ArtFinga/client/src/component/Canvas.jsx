@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ColorChange from './ColorChange';
 import SizeChange from './SizeChange';
+ // import SaveForm from './SaveForm';
+ import axios from 'axios';
 
 export default class Canvas extends Component{
   //based on the work of Christian Nwamba
@@ -8,7 +10,8 @@ export default class Canvas extends Component{
     super(props);
     this.state = {
       currentColor: '',
-      currentSize: 5
+      currentSize: 5,
+      savedPics: []
     }
     this.onMouseDown = this.onMouseDown.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
@@ -66,9 +69,10 @@ export default class Canvas extends Component{
       this.prevPos = { offsetX, offsetY };
     }
     componentDidMount(){ //determines the shape of the canvas
-      this.canvas.width = 1000;//width of the canvas
+      this.canvas.width = 600;//width of the canvas
       this.canvas.height = 800;//height of the canvas
-      this.ctx = this.canvas.getContext('2d');//determines
+      this.ctx = this.canvas.getContext('2d');//determines what objects you get out of canvas
+
       // this.ctx.strokeStyle = this.colorChange();/*WE NEED THIS TO CHANGE INTO A HEX VALUE*/ //The strokeStyle property sets or
       this.ctx.lineJoin = 'round'; //determines the shapes of the lines
       this.ctx.lineCap = 'round'; //determines the shape of the brush
@@ -77,6 +81,10 @@ export default class Canvas extends Component{
     componentDidUpdate(){//determines the color and size of the brush
       this.ctx.strokeStyle = this.state.currentColor;/*WE NEED THIS TO CHANGE INTO A HEX VALUE*/ //The strokeStyle property sets or returns the color, gradient, or pattern used for strokes.
       this.ctx.lineWidth = this.state.currentSize;//determines size of the pen stroke //WE NEED TO CHANGE THIS INTO AN INTEGER
+    }
+
+    componentWillUnmount(){
+      this.props.savePics(this.state.savedPics)
     }
 
     clear(){
@@ -136,22 +144,50 @@ export default class Canvas extends Component{
       })
     }
 
+    async fetchSave(canvas, filepath){
+    const dataURL = canvas.toBlob(async function(blob){
+      const formData = new FormData();
+      formData.append('image', blob);
+      const resp = await axios.post(`/artworks`, formData, {
+      	headers: {
+      		'Content-Type': 'multipart/form-data',
+      	},
+      });
+    }, 'image/jpeg');
+    this.href = dataURL;
+      this.setState(prevState => {
+        return{
+          savedPics:[
+            ...prevState.savedPics,
+           dataURL
+          ]
+        }
+      })
+    }
+
+
+
   render(){
     return(
-      <div>
-      <canvas
-      ref={(ref) => (this.canvas = ref)}
-            style={{ background: 'white' }}
-            onMouseDown={this.onMouseDown}
-            onMouseLeave={this.endPaintEvent}
-            onMouseUp={this.endPaintEvent}
-            onMouseMove={this.onMouseMove}
-      />
-           <div className = "buttons">
-          <ColorChange newColor = {this.setColor} />
-          <SizeChange newSize = {this.setSize} />
-          </div>
-          <button onClick={()=>this.clear()}>reset</button>{/*this is supposed to reset. doesn't work*/}
+      <div className = "canvasStudio">
+        <div className = "draw_n_Save">
+            <canvas
+            ref={(ref) => (this.canvas = ref)}
+                  style={{ background: 'white' }}
+                  onMouseDown={this.onMouseDown}
+                  onMouseLeave={this.endPaintEvent}
+                  onMouseUp={this.endPaintEvent}
+                  onMouseMove={this.onMouseMove}
+            />
+          {/* <SaveForm />*/}
+          <button onClick={()=>this.fetchSave(this.canvas)}>save</button>
+
+                 <div className = "buttons">
+                <ColorChange newColor = {this.setColor} />
+                <SizeChange newSize = {this.setSize} />
+                </div>
+                <button onClick={()=>this.clear()}>reset</button>
+            </div>
       </div>
 
     );

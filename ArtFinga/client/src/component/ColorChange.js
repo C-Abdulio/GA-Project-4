@@ -8,61 +8,61 @@ export default function ColorChange(props){
         className = "colorBtn"
         id = "white"
         onClick = {() => props.newColor('white')}>
-        WHITE
+        <p>WHITE</p>
         </div>
         <div
         className = "colorBtn"
         id = "pink"
         onClick = {() => props.newColor('pink')}>
-        PINK
+        <p>PINK</p>
         </div>
         <div
         className = "colorBtn"
         id = "red"
         onClick = {() => props.newColor('red')}>
-        RED
+        <p>RED</p>
         </div>
         <div
         className = "colorBtn"
         id = "orange"
         onClick = {() => props.newColor('orange')}>
-        ORANGE
+        <p>ORANGE</p>
         </div>
         <div
         className = "colorBtn"
         id = "yellow"
         onClick = {() => props.newColor('yellow')}>
-        YELLOW
+        <p>YELLOW</p>
         </div>
         <div
         className = "colorBtn"
         id = "green"
         onClick = {() => props.newColor('green')}>
-        GREEN
+        <p>GREEN</p>
         </div>
         <div
         className = "colorBtn"
         id = "teal"
         onClick = {() => props.newColor('teal')}>
-        TEAL
+        <p>TEAL</p>
         </div>
         <div
         className = "colorBtn"
         id = "blue"
         onClick = {() => props.newColor('blue')}>
-        BLUE
+        <p>BLUE</p>
         </div>
         <div
         className = "colorBtn"
         id = "violet"
         onClick = {() => props.newColor('violet')}>
-        VIOLET
+        <p>VIOLET</p>
         </div>
         <div
         className = "colorBtn"
         id = "black"
         onClick = {() => props.newColor('black')}>
-        BLACK
+        <p>BLACK</p>
         </div>
       </nav>
     </div>
