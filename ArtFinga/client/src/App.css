@@ -4,22 +4,53 @@
   background-size: cover;
   width:auto;
   height:100%;
+  display: grid;
+  grid-template-columns: repeat(1fr, 6);
+  grid-template-rows: repeat(50%, 5);
+  grid-template-areas:
+  "nav nav nav nav nav nav"
+  "cnv cnv cnv . . clr clr"
+  "cnv cnv cnv . . siz siz"
+  "cnn cnv cnv . . sav rst"
 }
 
 canvas {
   border: solid 2px black;
 }
 
-nav{
+
+
+.viewNav{
+  grid-column: auto;
   display:flex;
   justify-content: space-between;
   padding:10px;
   color: #FFEEEE;
 }
 
+.viewNav > h3{
+  font-size:20pt;
+}
+
+.viewNav div{
+  justify-content: flex-end;
+  justify-content: space-around;
+}
+
 hr{
   width:70rem;
   margin:10px auto;
+}
+/*//Canvas Studio */
+.canvasStudio{
+  margin:5px
+}
+
+.draw_n_Save{
+
+}
+.galleryPic{
+  background-color:white;
 }
 /*//// The Drawing Tools for the Canvas */
 .colorNav {

@@ -12,7 +12,7 @@ import turtle from './turtle.jpeg'
         <div className = "gallery">
         <img className = "galleryPic" src={turtle} alt="art1"/>
         <div>
-          {props.index.map(pic => (
+          {props.index && props.index.map(pic => (
             <div key={pic.id} className="galleryPic">
               <img src={pic.image_url} alt={pic.title}/>
               <h2>{pic.title}</h2>

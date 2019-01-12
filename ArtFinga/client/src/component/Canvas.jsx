@@ -83,9 +83,9 @@ export default class Canvas extends Component{
       this.ctx.lineWidth = this.state.currentSize;//determines size of the pen stroke //WE NEED TO CHANGE THIS INTO AN INTEGER
     }
 
-    componentWillUnmount(){
-      this.props.savePics(this.state.savedPics)
-    }
+    // componentWillUnmount(){
+    //   this.props.savePics(this.state.savedPics)
+    // }
 
     clear(){
       var context = this.canvas.getContext('2d');
@@ -148,12 +148,13 @@ export default class Canvas extends Component{
     const dataURL = canvas.toBlob(async function(blob){
       const formData = new FormData();
       formData.append('image', blob);
-      const resp = await axios.post(`/artworks`, formData, {
+      await axios.post(`/artworks`, formData, {
       	headers: {
       		'Content-Type': 'multipart/form-data',
       	},
       });
     }, 'image/jpeg');
+    debugger;
     this.href = dataURL;
       this.setState(prevState => {
         return{

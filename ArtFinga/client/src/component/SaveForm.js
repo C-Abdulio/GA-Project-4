@@ -5,17 +5,24 @@ export default class SaveForm extends Component{
   render(props){
     return(
       <div>
-        <form
+        <form>
+
+        <input
         type="text"
-        placeholder="enter username"
+        placeholder="text"
+        onChange={this.props.handleChange}
         />
 
-        <form type="password" />
+        <input type="password"
+         placeholder="password"
+         onChange={this.props.handleChange}
+        />
 
-        <button onClick = {this.save()}>
+        <button onClick = {this.props.getPics}>
         SAVE
         </button>
 
+        </form>
       </div>
     )
   }

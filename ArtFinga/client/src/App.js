@@ -3,21 +3,26 @@ import './App.css';
 import Canvas from './component/Canvas';
 import NavBar from './component/NavBar';
 import Footer from './component/Footer'
-// import Welcome from './component/Welcome';
 import Gallery from './component/Gallery/index.js';
 import UserPage from './component/UserPage';
-// import axios from 'axios';
+import SaveForm from './component/SaveForm';
+import axios from 'axios';
 
 class App extends Component {
 constructor(props){
   super(props);
   this.state = {
     currentView: " ",
-    imgData:[]
+    imgData:[],
+    savedPics: [],
+    name: '',
+    password: ''
 
   }
   this.setView = this.setView.bind(this);
-  this.savePics = this.savePics.bind(this);
+  // this.savePics = this.savePics.bind(this);
+  this.getPics = this.getPics.bind(this);
+  this.callPics = this.callPics.bind(this);
 }
 
 //call axios to GET the array of images
@@ -26,7 +31,16 @@ constructor(props){
 
 //
 
-
+getPics(pics) {
+  this.setState(prevState => {
+    return{
+      savedPics:[
+        ...prevState.savedPics,
+       pics
+      ]
+    }
+  })
+}
 
 getView(){
   const view = this.state.currentView;
@@ -36,7 +50,7 @@ getView(){
     case "userPage":
     return <UserPage />;
     default:
-    return <Canvas savePics = {this.savePics} />;
+    return <Canvas getPics = {this.getPics} />;
   }
 }
 setView(view){
@@ -45,18 +59,47 @@ setView(view){
   });
 }
 
-savePics(pics){
-  this.setState({
-    imgData:pics
-  })
-}
+// savePics(pics){
+//   this.setState({
+//     imgData:pics
+//   })
+// }
+
+async callPics(){
+  const call = await axios.get(`/artworks`)
+    this.setState({
+      imgData:call.data
+    })
+  }
+
+  handleChange(e){
+    this.setState({
+      [e.target.name]: e.target.value,
+      [e.target.password]: e.target.value
+    })
+  }
+
+  async handleSubmit(e){
+    e.preventDefault();
+    const create = {
+      "name": `${this.state.name}`,
+      "password": `${this.state.password}`
+    }
+    await axios.post(`/users`, create);
+  }
+
   render() {
     return (
       <div className="App">
-          <NavBar handleChangeView = {this.setView}/>
+          <NavBar
+          callPics = {this.callPics}
+          handleChangeView = {this.setView}/>
           <hr></hr>
           {this.getView()}
           <Footer />
+          <SaveForm
+          handleChange = {this.handleChange}
+          handleSubmit = {this.handleSubmit} />
       </div>
     );
   }
