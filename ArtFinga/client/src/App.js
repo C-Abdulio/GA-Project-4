@@ -14,14 +14,15 @@ constructor(props){
     currentView: " ",
     imgData:[],
     savedPics: [],
-    name: '',
-    password: ''
+    name: ''
 
   }
   this.setView = this.setView.bind(this);
   // this.savePics = this.savePics.bind(this);
   this.getPics = this.getPics.bind(this);
   this.callPics = this.callPics.bind(this);
+  this.handleChange = this.handleChange.bind(this);
+  this.handleSubmit = this.handleSubmit.bind(this);
 }
 
 //call axios to GET the array of images
@@ -69,28 +70,31 @@ async callPics(){
     this.setState({
       imgData:call.data
     })
+
   }
 
-  // handleChange(e){
-  //   this.setState({
-  //     [e.target.name]: e.target.value,
-  //   })
-  // }
-  //
-  // async handleSubmit(e){
-  //   e.preventDefault();
-  //   const create = {
-  //     "name": `${this.state.name}`
-  //     // "password": `${this.state.password}`
-  //   }
-  //   await axios.post(`/users`, create);
-  // }
+  handleChange(e){
+    this.setState({
+      [e.target.name]: e.target.value,
+    })
+  }
+
+  async handleSubmit(e){
+    e.preventDefault();
+    const create = {
+      "name": `${this.state.name}`
+      // "password": `${this.state.password}`
+    }
+    await axios.post(`/users`, create);
+  }
 
   render() {
     return (
       <div className="App">
           <NavBar
           callPics = {this.callPics}
+          handleChange = {this.handleChange}
+          handleSubmit = {this.handleSubmit}
           handleChangeView = {this.setView}
           />
           <hr></hr>

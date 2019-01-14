@@ -16,6 +16,7 @@ import turtle from './turtle.jpeg'
             <div key={pic.id} className="galleryPic">
               <img src={pic.image_url} alt={pic.title}/>
               <h2>{pic.title}</h2>
+              {/*<h2>CREATED BY: {this.props.value}</h2>*/}
         </div>
       ))}
     </div>

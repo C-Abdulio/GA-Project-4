@@ -154,7 +154,7 @@ export default class Canvas extends Component{
       await axios.post(`/artworks`, formData, {
       	headers: {
       		'Content-Type': 'multipart/form-data',
-      	},
+      	}
       });
     }, 'image/jpeg');
     this.href = dataURL;
@@ -197,7 +197,16 @@ export default class Canvas extends Component{
               type="text"
               placeholder="title"
               alt="title"/>
+
+            <input
+              onChange = {this.props.handleChange}
+              name="name"
+              value={this.props.name}
+              type="text"
+              placeholder="name"
+              alt="name"/>
           </label>
+
           <button onClick={()=>this.fetchSave(this.canvas)}>save</button>
 
                  <div className = "buttons">
