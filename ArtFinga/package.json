@@ -1,0 +1,12 @@
+{
+  "name": "ArtFinga",
+  "license": "MIT",
+  "engines": {
+    "node": "11.2.0"
+  },
+  "scripts": {
+    "build": "npm --prefix client install && npm --prefix client run build",
+    "deploy": "cp -a client/build/. public/",
+    "heroku-postbuild": "npm run build && npm run deploy"
+  }
+}
