@@ -24,8 +24,8 @@ export default class SaveForm extends Component{
         placeholder="title"
         onChange={this.props.handleChange}
         />
-        
-        <button onClick = {this.props.getPics}>
+
+        <button onClick = {this.props.handleSubmit}>
         SAVE
         </button>
 

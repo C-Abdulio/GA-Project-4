@@ -71,22 +71,20 @@ async callPics(){
     })
   }
 
-  handleChange(e){
-    this.setState({
-      [e.target.name]: e.target.value,
-      [e.target.password]: e.target.value,
-      [e.target.title]: e.target.value
-    })
-  }
-
-  async handleSubmit(e){
-    e.preventDefault();
-    const create = {
-      "name": `${this.state.name}`,
-      "password": `${this.state.password}`
-    }
-    await axios.post(`/users`, create);
-  }
+  // handleChange(e){
+  //   this.setState({
+  //     [e.target.name]: e.target.value,
+  //   })
+  // }
+  //
+  // async handleSubmit(e){
+  //   e.preventDefault();
+  //   const create = {
+  //     "name": `${this.state.name}`
+  //     // "password": `${this.state.password}`
+  //   }
+  //   await axios.post(`/users`, create);
+  // }
 
   render() {
     return (
@@ -94,8 +92,7 @@ async callPics(){
           <NavBar
           callPics = {this.callPics}
           handleChangeView = {this.setView}
-          handleChange = {this.handleChange}
-          handleSubmit = {this.handleSubmit}/>
+          />
           <hr></hr>
           {this.getView()}
           <Footer />

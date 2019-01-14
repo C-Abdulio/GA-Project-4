@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ColorChange from './ColorChange';
 import SizeChange from './SizeChange';
- import SaveForm from './SaveForm';
+ // import SaveForm from './SaveForm';
  import axios from 'axios';
 
 export default class Canvas extends Component{
@@ -11,7 +11,8 @@ export default class Canvas extends Component{
     this.state = {
       currentColor: '',
       currentSize: 5,
-      savedPics: []
+      savedPics: [],
+      title:''
     }
     this.onMouseDown = this.onMouseDown.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
@@ -19,6 +20,7 @@ export default class Canvas extends Component{
     this.setColor = this.setColor.bind(this);
     this.setSize = this.setSize.bind(this);
     this.clear = this.clear.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
     strokeStyle= '';//controls the color value
     paintOn = false; //default value for paintOn method, indicates that the user is currently not painting by using onMouseDown event
@@ -145,16 +147,16 @@ export default class Canvas extends Component{
     }
 
     async fetchSave(canvas, filepath){
-    const dataURL = canvas.toBlob(async function(blob){
+    const dataURL = canvas.toBlob(async (blob) => {
       const formData = new FormData();
       formData.append('image', blob);
+      formData.append('title', this.state.title)
       await axios.post(`/artworks`, formData, {
       	headers: {
       		'Content-Type': 'multipart/form-data',
       	},
       });
     }, 'image/jpeg');
-    debugger;
     this.href = dataURL;
       this.setState(prevState => {
         return{
@@ -166,6 +168,11 @@ export default class Canvas extends Component{
       })
     }
 
+  handleChange(e){
+    this.setState({
+      title: e.target.value
+    })
+  }
 
 
   render(){
@@ -180,7 +187,17 @@ export default class Canvas extends Component{
                   onMouseUp={this.endPaintEvent}
                   onMouseMove={this.onMouseMove}
             />
-          <SaveForm />
+          {/*<SaveForm />*/}
+          <label>
+            TITLE:
+            <input
+              onChange = {this.handleChange}
+              name="title"
+              value={this.state.title}
+              type="text"
+              placeholder="title"
+              alt="title"/>
+          </label>
           <button onClick={()=>this.fetchSave(this.canvas)}>save</button>
 
                  <div className = "buttons">
