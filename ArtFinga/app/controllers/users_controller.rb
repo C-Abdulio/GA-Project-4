@@ -8,6 +8,7 @@ class UsersController < ApplicationController
       render json: @user, status: :created, location: @user
     else
       render json: @user.errors, status: :unprocessable_entity
+    end
   end
 
   #Find all Users (Maybe Useful to the Gallery)
