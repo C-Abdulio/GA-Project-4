@@ -25,19 +25,14 @@ users = User.create([ #this posts a new user (or a bulk of users)
   }
 ])
 
-users[0].artworks.create(
-  title: 'kirby',
-img_url: 'https://s3.us-east-2.amazonaws.com/active-storage-artfinga-images/canvastestpic.png'
-)
-users[1].artworks.create(
-  title: 'Phaser',
-  img_url: 'http://phaser.io/content/tutorials/making-your-first-phaser-3-game/tutorial_header.png'
-)
-artwork1 = Artwork.create(
-  title: 'bloohbloghlogf',
-img_url: 'https://i.4cdn.org/co/1546198971801.png'
-)
-users[2].artworks << artwork1
+# users[0].artworks.create(
+#   title: 'Phaser',
+#   img_url: 'http://phaser.io/content/tutorials/making-your-first-phaser-3-game/tutorial_header.png'
+# )
+# users[1].artworks.create(
+#   title: 'bloohbloghlogf',
+# img_url: 'https://i.4cdn.org/co/1546198971801.png'
+# )
 
 # artworks = Artwork.create([
 #   {
