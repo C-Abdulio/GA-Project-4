@@ -16,12 +16,6 @@ class ArtworksController < ApplicationController
   # POST /artworks
   def create
     @artwork = Artwork.new(artwork_params)
-    # @artwork.image.attach(
-    #   io: File.open('lib/images/Sketch_12_4_2018.png'),
-    #   filename:'Sketch12_4_2018.png',
-    #   content_type: 'application/png',
-    #   identify:false
-    # )
 
     if @artwork.save
       render json: @artwork, status: :created, location: @artwork
