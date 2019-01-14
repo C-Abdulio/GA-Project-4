@@ -5,7 +5,6 @@ import NavBar from './component/NavBar';
 import Footer from './component/Footer'
 import Gallery from './component/Gallery/index.js';
 import UserPage from './component/UserPage';
-import SaveForm from './component/SaveForm';
 import axios from 'axios';
 
 class App extends Component {
@@ -75,7 +74,8 @@ async callPics(){
   handleChange(e){
     this.setState({
       [e.target.name]: e.target.value,
-      [e.target.password]: e.target.value
+      [e.target.password]: e.target.value,
+      [e.target.title]: e.target.value
     })
   }
 
@@ -93,13 +93,12 @@ async callPics(){
       <div className="App">
           <NavBar
           callPics = {this.callPics}
-          handleChangeView = {this.setView}/>
+          handleChangeView = {this.setView}
+          handleChange = {this.handleChange}
+          handleSubmit = {this.handleSubmit}/>
           <hr></hr>
           {this.getView()}
           <Footer />
-          <SaveForm
-          handleChange = {this.handleChange}
-          handleSubmit = {this.handleSubmit} />
       </div>
     );
   }

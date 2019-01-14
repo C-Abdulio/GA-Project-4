@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ColorChange from './ColorChange';
 import SizeChange from './SizeChange';
- // import SaveForm from './SaveForm';
+ import SaveForm from './SaveForm';
  import axios from 'axios';
 
 export default class Canvas extends Component{
@@ -180,7 +180,7 @@ export default class Canvas extends Component{
                   onMouseUp={this.endPaintEvent}
                   onMouseMove={this.onMouseMove}
             />
-          {/* <SaveForm />*/}
+          <SaveForm />
           <button onClick={()=>this.fetchSave(this.canvas)}>save</button>
 
                  <div className = "buttons">

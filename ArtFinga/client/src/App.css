@@ -15,7 +15,8 @@
 }
 
 canvas {
-  border: solid 2px black;
+  border: solid 2px #23B5D3;
+  grid-area: cnv;
 }
 
 
@@ -135,4 +136,22 @@ hr{
 
   .gallery{
 
+  }
+
+  /*////Footer */
+  footer{
+    background-color:#000;
+    display: flex;
+  }
+
+  footer .socialImg{
+    justify-content: flex-end;
+    margin:5px;
+    max-height: 50px;
+    max-width:50px;
+  }
+
+  footer > p{
+    justify-content: flex-start;
+    color:#28DDCC;
   }

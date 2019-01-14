@@ -1,13 +1,17 @@
 import React from 'react';
-// import { Twitter, gitHub, deviantArt }  from '../resource';
+import twitter  from '../resource/Twitter.png';
+import github from '../resource/github.png';
+import deviantArt from '../resource/deviantArt.png';
 
 export default function Footer(){
   return(
     <footer>
       <p>© Carlos Abdu</p>
-      {/*<img className = "social" src = {Twitter} alt="twitter"/>*/}
-      {/* image link for Github*/}
-      {/* image link for deviantArt*/}
+      <div className = "social">
+        <img className = "socialImg" src = {twitter} alt="twitter"/>
+        <img className = "socialImg" src = {github} alt="github"/>
+        <img className = "socialImg" src = {deviantArt} alt="deviantArt"/>
+      </div>
     </footer>
   )
 }
