@@ -9,12 +9,11 @@ import turtle from './turtle.jpeg'
    return(
      <div>
         <h2>INSERT GALLERY HERE</h2>
-        <div className = "gallery">
-          <div className = "galleryPic">
-            <img src={turtle} alt="art1"/>
-          </div>
-
-          <div>
+        <div>
+          <div className = "gallery">
+              <div className = "galleryPic">
+                <img src={turtle} alt="art1"/>
+              </div>
             {props.index && props.index.map(pic => (
               <div key={pic.id} className="galleryPic">
                 <img src={pic.image_url} alt={pic.title}/>
