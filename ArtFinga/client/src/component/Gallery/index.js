@@ -10,15 +10,18 @@ import turtle from './turtle.jpeg'
      <div>
         <h2>INSERT GALLERY HERE</h2>
         <div className = "gallery">
-        <img className = "galleryPic" src={turtle} alt="art1"/>
-        <div>
-          {props.index && props.index.map(pic => (
-            <div key={pic.id} className="galleryPic">
-              <img src={pic.image_url} alt={pic.title}/>
-              <h2>{pic.title}</h2>
-              {/*<h2>CREATED BY: {this.props.value}</h2>*/}
-        </div>
-      ))}
+          <div className = "galleryPic">
+            <img src={turtle} alt="art1"/>
+          </div>
+
+          <div>
+            {props.index && props.index.map(pic => (
+              <div key={pic.id} className="galleryPic">
+                <img src={pic.image_url} alt={pic.title}/>
+                <h2>{pic.title}</h2>
+                {/*<h2>CREATED BY: {this.props.value}</h2>*/}
+          </div>
+        ))}
     </div>
         </div>
      </div>

@@ -21,6 +21,7 @@ export default class Canvas extends Component{
     this.setSize = this.setSize.bind(this);
     this.clear = this.clear.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.fillBackground = this.fillBackground.bind(this);
   }
     strokeStyle= '';//controls the color value
     paintOn = false; //default value for paintOn method, indicates that the user is currently not painting by using onMouseDown event
@@ -70,10 +71,21 @@ export default class Canvas extends Component{
       this.ctx.stroke();
       this.prevPos = { offsetX, offsetY };
     }
+
+    fillBackground(canvas, color){
+      var context = this.canvas.getContext('2d');
+      context.save();
+      context.globalCompositeOperation = 'destination-over';
+      context.fillStyle = color;
+      context.fillRect(0,0, this.canvas.width, this.canvas.height)
+      context.restore();
+    }
+
     componentDidMount(){ //determines the shape of the canvas
       this.canvas.width = 600;//width of the canvas
       this.canvas.height = 800;//height of the canvas
       this.ctx = this.canvas.getContext('2d');//determines what objects you get out of canvas
+      this.fillBackground(this.canvas, 'white');
 
       // this.ctx.strokeStyle = this.colorChange();/*WE NEED THIS TO CHANGE INTO A HEX VALUE*/ //The strokeStyle property sets or
       this.ctx.lineJoin = 'round'; //determines the shapes of the lines
@@ -92,7 +104,9 @@ export default class Canvas extends Component{
     clear(){
       var context = this.canvas.getContext('2d');
       context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      this.fillBackground(this.canvas, 'white');
     }
+
 
     sizeChange(){
       var size = this.state.currentSize;

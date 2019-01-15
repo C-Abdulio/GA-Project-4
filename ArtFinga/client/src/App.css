@@ -64,14 +64,13 @@ canvas {
 /*//Gallery//*/
 
 .gallery{
-  display: flex;
-  width:5rem;
-  height:auto;
-  flex-wrap: wrap;
+margin:auto 0;
+border:solid 2px black;
+display: flex;
 }
-.galleryPic{
-  max-width: 50%;
-  max-height: 50%;
+.galleryPic img{
+  width: 50%;
+  height: 50%;
   background-color:white;
 }
 /*//// The Drawing Tools for the Canvas */
