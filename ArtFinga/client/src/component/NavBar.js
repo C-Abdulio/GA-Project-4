@@ -1,10 +1,15 @@
 import React from 'react';
+import logo from '../resource/Artfinga-Logo-Color.png';
 
 export default function NavBar(props){
   return(
 
     <nav className= "viewNav">
-      <h3>ARTFINGAH</h3>
+      <img
+      className="logo"
+      src={logo}
+      alt="logo"/>
+      
       <div className="navBtns" onClick = {() => props.handleChangeView('create')}>
       <h3>CREATE</h3>
       </div>

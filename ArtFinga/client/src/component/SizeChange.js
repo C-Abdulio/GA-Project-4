@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function SizeChange(props){
   return(
-    <div>
+    <div className="sizeChange">
       <button onClick = {() => props.newSize(5)}>small</button>
       <button onClick = {() => props.newSize(10)}>Medium</button>
       <button onClick = {() => props.newSize(20)}>LARGE</button>
