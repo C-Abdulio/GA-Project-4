@@ -1,0 +1,472 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: active_storage_attachments; Type: TABLE; Schema: public; Owner: student_107
+--
+
+CREATE TABLE public.active_storage_attachments (
+    id bigint NOT NULL,
+    name character varying NOT NULL,
+    record_type character varying NOT NULL,
+    record_id bigint NOT NULL,
+    blob_id bigint NOT NULL,
+    created_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.active_storage_attachments OWNER TO student_107;
+
+--
+-- Name: active_storage_attachments_id_seq; Type: SEQUENCE; Schema: public; Owner: student_107
+--
+
+CREATE SEQUENCE public.active_storage_attachments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.active_storage_attachments_id_seq OWNER TO student_107;
+
+--
+-- Name: active_storage_attachments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: student_107
+--
+
+ALTER SEQUENCE public.active_storage_attachments_id_seq OWNED BY public.active_storage_attachments.id;
+
+
+--
+-- Name: active_storage_blobs; Type: TABLE; Schema: public; Owner: student_107
+--
+
+CREATE TABLE public.active_storage_blobs (
+    id bigint NOT NULL,
+    key character varying NOT NULL,
+    filename character varying NOT NULL,
+    content_type character varying,
+    metadata text,
+    byte_size bigint NOT NULL,
+    checksum character varying NOT NULL,
+    created_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.active_storage_blobs OWNER TO student_107;
+
+--
+-- Name: active_storage_blobs_id_seq; Type: SEQUENCE; Schema: public; Owner: student_107
+--
+
+CREATE SEQUENCE public.active_storage_blobs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.active_storage_blobs_id_seq OWNER TO student_107;
+
+--
+-- Name: active_storage_blobs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: student_107
+--
+
+ALTER SEQUENCE public.active_storage_blobs_id_seq OWNED BY public.active_storage_blobs.id;
+
+
+--
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: student_107
+--
+
+CREATE TABLE public.ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.ar_internal_metadata OWNER TO student_107;
+
+--
+-- Name: artworks; Type: TABLE; Schema: public; Owner: student_107
+--
+
+CREATE TABLE public.artworks (
+    id bigint NOT NULL,
+    title character varying,
+    img_url character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    user_id bigint
+);
+
+
+ALTER TABLE public.artworks OWNER TO student_107;
+
+--
+-- Name: artworks_id_seq; Type: SEQUENCE; Schema: public; Owner: student_107
+--
+
+CREATE SEQUENCE public.artworks_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.artworks_id_seq OWNER TO student_107;
+
+--
+-- Name: artworks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: student_107
+--
+
+ALTER SEQUENCE public.artworks_id_seq OWNED BY public.artworks.id;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: student_107
+--
+
+CREATE TABLE public.schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE public.schema_migrations OWNER TO student_107;
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: student_107
+--
+
+CREATE TABLE public.users (
+    id bigint NOT NULL,
+    name character varying,
+    password character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.users OWNER TO student_107;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: student_107
+--
+
+CREATE SEQUENCE public.users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_id_seq OWNER TO student_107;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: student_107
+--
+
+ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+
+
+--
+-- Name: active_storage_attachments id; Type: DEFAULT; Schema: public; Owner: student_107
+--
+
+ALTER TABLE ONLY public.active_storage_attachments ALTER COLUMN id SET DEFAULT nextval('public.active_storage_attachments_id_seq'::regclass);
+
+
+--
+-- Name: active_storage_blobs id; Type: DEFAULT; Schema: public; Owner: student_107
+--
+
+ALTER TABLE ONLY public.active_storage_blobs ALTER COLUMN id SET DEFAULT nextval('public.active_storage_blobs_id_seq'::regclass);
+
+
+--
+-- Name: artworks id; Type: DEFAULT; Schema: public; Owner: student_107
+--
+
+ALTER TABLE ONLY public.artworks ALTER COLUMN id SET DEFAULT nextval('public.artworks_id_seq'::regclass);
+
+
+--
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: student_107
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- Data for Name: active_storage_attachments; Type: TABLE DATA; Schema: public; Owner: student_107
+--
+
+COPY public.active_storage_attachments (id, name, record_type, record_id, blob_id, created_at) FROM stdin;
+1	image	Artwork	7	3	2019-01-10 17:14:13.30314
+2	image	Artwork	8	4	2019-01-10 17:15:58.027547
+3	image	Artwork	9	5	2019-01-10 17:18:17.025377
+6	image	Artwork	12	8	2019-01-10 18:14:32.067902
+7	image	Artwork	13	9	2019-01-10 23:17:41.511255
+8	image	Artwork	14	10	2019-01-10 23:35:05.047402
+9	image	Artwork	15	11	2019-01-11 00:07:08.004472
+10	image	Artwork	16	12	2019-01-11 00:28:30.021652
+11	image	Artwork	17	13	2019-01-11 00:30:21.058238
+12	image	Artwork	18	14	2019-01-11 22:14:39.773127
+13	image	Artwork	19	15	2019-01-14 17:55:28.699758
+14	image	Artwork	20	16	2019-01-14 17:57:35.271513
+15	image	Artwork	21	17	2019-01-14 18:02:27.231919
+19	image	Artwork	25	21	2019-01-14 18:41:38.114475
+20	image	Artwork	26	22	2019-01-14 18:59:15.479517
+21	image	Artwork	27	23	2019-01-14 19:19:34.723283
+22	image	Artwork	28	24	2019-01-14 20:56:18.570048
+23	image	Artwork	29	25	2019-01-14 21:36:29.200746
+24	image	Artwork	30	26	2019-01-15 02:59:59.546554
+25	image	Artwork	31	27	2019-01-15 06:34:43.438722
+26	image	Artwork	32	28	2019-01-15 07:05:01.029372
+27	image	Artwork	33	29	2019-01-15 14:52:34.808277
+\.
+
+
+--
+-- Data for Name: active_storage_blobs; Type: TABLE DATA; Schema: public; Owner: student_107
+--
+
+COPY public.active_storage_blobs (id, key, filename, content_type, metadata, byte_size, checksum, created_at) FROM stdin;
+1	zHLeaYvWMpyFHgvWCoiZ7vrD	blob	image/jpeg	{"identified":true}	9922	X7vXyH55r382/4x+ZEuUqA==	2019-01-10 17:01:42.080964
+2	ZBQ7o5QbdYkrP7sodDmLb5Us	blob	image/jpeg	{"identified":true}	9922	X7vXyH55r382/4x+ZEuUqA==	2019-01-10 17:05:35.158108
+3	NWmKjCPx2xwjKtd9uM8hKveh	blob	image/jpeg	{"identified":true,"analyzed":true}	3134	GGoxdTwn+At1gR9QQoDEaQ==	2019-01-10 17:14:13.242113
+4	swzZWNPxw2YfXUGWjvN1Z4kt	blob	image/jpeg	{"identified":true,"analyzed":true}	3134	GGoxdTwn+At1gR9QQoDEaQ==	2019-01-10 17:15:57.999599
+5	ZE1DmrUr2dxtdz5Lfq1NvBZc	blob	image/jpeg	{"identified":true,"analyzed":true}	7647	sgRPP0yC2yPy5Cu8UcZ14A==	2019-01-10 17:18:17.008143
+26	9ZuUp8h4vgw9vACrbgcEL3TV	blob	image/jpeg	{"identified":true,"analyzed":true}	38205	Hf3FDuEcRZsm52kuQa5qAA==	2019-01-15 02:59:59.449178
+8	cyxv269XEEM1Cs6i2erRadeu	blob	image/jpeg	{"identified":true,"analyzed":true}	9112	7iGe4HIbHh5qEpcfIRnnTA==	2019-01-10 18:14:32.044909
+9	GqMSfYcDJkRv8jFcmRTw84EY	blob	image/jpeg	{"identified":true,"analyzed":true}	15328	Mg17UO2i62L4vSqYU59h/w==	2019-01-10 23:17:41.483125
+10	8EvnC7q6APG2JkssBgMY15tN	blob	image/jpeg	{"identified":true,"analyzed":true}	17213	pdlybSfer1pSnBZKXOzy1g==	2019-01-10 23:35:05.027925
+11	xbCSJFZrbXDvV3T8pVNM9AY2	blob	image/jpeg	{"identified":true,"analyzed":true}	5988	8ypJTCLgL8/TwzTOmoSPdA==	2019-01-11 00:07:07.989456
+12	ZnHmEXqN5ZLKC4Ng8z2uPhoy	blob	image/jpeg	{"identified":true,"analyzed":true}	3134	GGoxdTwn+At1gR9QQoDEaQ==	2019-01-11 00:28:29.998398
+13	6FRaBgqz5THbePmdqhQLHC5L	blob	image/jpeg	{"identified":true,"analyzed":true}	3134	GGoxdTwn+At1gR9QQoDEaQ==	2019-01-11 00:30:21.041444
+14	Ywqum5RpguUpHvdwW4id2ZEv	blob	image/jpeg	{"identified":true,"analyzed":true}	5075	49Ji3GjAT8DcE5pERfbpQA==	2019-01-11 22:14:39.74423
+15	7Lycu9Qspe4kJW6b5vxNAdGg	blob	image/jpeg	{"identified":true,"analyzed":true}	7521	UbaN3JJSWGQU9QODlsSlEg==	2019-01-14 17:55:28.670256
+16	yeEuRXoy5jJLmjZmeMZGD55x	blob	image/jpeg	{"identified":true,"analyzed":true}	7521	UbaN3JJSWGQU9QODlsSlEg==	2019-01-14 17:57:35.262184
+17	JuMAsciT8zPva7PePFAMGZPJ	blob	image/jpeg	{"identified":true,"analyzed":true}	14606	zI/xUjFDUOUoLcez4mr8Rw==	2019-01-14 18:02:27.213651
+27	nGjSbDyKiT41rNeir74LMMQC	blob	image/jpeg	{"identified":true,"analyzed":true}	17583	qjgUheirS6UWtT8coATz2A==	2019-01-15 06:34:43.417014
+21	fYQMBVXYPzr8Uh8WSs2JegjK	blob	image/jpeg	{"identified":true,"analyzed":true}	23222	HIM+g2jbYMdRnZjBurULLw==	2019-01-14 18:41:38.081275
+22	22Krj97QTxt74xhMGeMFMeQc	blob	image/jpeg	{"identified":true,"analyzed":true}	25184	GuMsor6aDuC1Q0xORsT7Mg==	2019-01-14 18:59:15.466676
+23	WGC6Jknn6VEm3tCMLt2L9o7W	blob	image/jpeg	{"identified":true,"analyzed":true}	13637	K1rNPPt0JyNd20mMBfcvRA==	2019-01-14 19:19:34.683983
+24	jUZ1ZxjcoYcL3iW6raUh11Ch	blob	image/jpeg	{"identified":true,"analyzed":true}	21770	bzVIbFZ3vk2sMWJg290qGw==	2019-01-14 20:56:18.494887
+25	2P1M8oHnWTtqrsiUeWK8dj5D	blob	image/jpeg	{"identified":true,"analyzed":true}	18952	RRBKr7W60RA+qNJQ/VIrYg==	2019-01-14 21:36:29.17712
+28	nARipngUo2PsTn6LKX5Jzpwd	blob	image/jpeg	{"identified":true,"analyzed":true}	22748	QTgd0VmL+4/oAL0I6PHqGg==	2019-01-15 07:05:01.013145
+29	Rg5wt9mmeexvkRj7ki9amNHB	blob	image/jpeg	{"identified":true,"analyzed":true}	35461	j7aDJ+J5pTuqYjZwl56Q6A==	2019-01-15 14:52:34.751418
+\.
+
+
+--
+-- Data for Name: ar_internal_metadata; Type: TABLE DATA; Schema: public; Owner: student_107
+--
+
+COPY public.ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
+environment	development	2019-01-09 15:41:30.062734	2019-01-09 15:41:30.062734
+\.
+
+
+--
+-- Data for Name: artworks; Type: TABLE DATA; Schema: public; Owner: student_107
+--
+
+COPY public.artworks (id, title, img_url, created_at, updated_at, user_id) FROM stdin;
+31	redbird	\N	2019-01-15 06:34:43.432509	2019-01-15 06:34:43.444407	\N
+32	hadoken	\N	2019-01-15 07:05:01.026566	2019-01-15 07:05:01.031959	\N
+33	Bananas	\N	2019-01-15 14:52:34.800437	2019-01-15 14:52:34.81457	\N
+26	\N	\N	2019-01-14 18:59:15.477484	2019-01-14 18:59:15.482681	\N
+25	\N	\N	2019-01-14 18:41:38.108673	2019-01-14 18:41:38.119094	7
+27	banana	\N	2019-01-14 19:19:34.72072	2019-01-14 19:19:34.725934	7
+28	weird flower	\N	2019-01-14 20:56:18.529467	2019-01-14 20:56:18.575955	\N
+29	weird flower2	\N	2019-01-14 21:36:29.194982	2019-01-14 21:36:29.205495	\N
+30	Buckles	\N	2019-01-15 02:59:59.536243	2019-01-15 02:59:59.559649	\N
+\.
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: student_107
+--
+
+COPY public.schema_migrations (version) FROM stdin;
+20190107230452
+20190107160656
+20190107171830
+20190107181535
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: student_107
+--
+
+COPY public.users (id, name, password, created_at, updated_at) FROM stdin;
+7	aCa	aaaa	2019-01-14 18:38:36.236956	2019-01-14 18:38:36.236956
+8	b@b.co	bbbb	2019-01-14 18:38:36.247713	2019-01-14 18:38:36.247713
+9	c@c.co	cccc	2019-01-14 18:38:36.254571	2019-01-14 18:38:36.254571
+\.
+
+
+--
+-- Name: active_storage_attachments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: student_107
+--
+
+SELECT pg_catalog.setval('public.active_storage_attachments_id_seq', 27, true);
+
+
+--
+-- Name: active_storage_blobs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: student_107
+--
+
+SELECT pg_catalog.setval('public.active_storage_blobs_id_seq', 29, true);
+
+
+--
+-- Name: artworks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: student_107
+--
+
+SELECT pg_catalog.setval('public.artworks_id_seq', 33, true);
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: student_107
+--
+
+SELECT pg_catalog.setval('public.users_id_seq', 9, true);
+
+
+--
+-- Name: active_storage_attachments active_storage_attachments_pkey; Type: CONSTRAINT; Schema: public; Owner: student_107
+--
+
+ALTER TABLE ONLY public.active_storage_attachments
+    ADD CONSTRAINT active_storage_attachments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: active_storage_blobs active_storage_blobs_pkey; Type: CONSTRAINT; Schema: public; Owner: student_107
+--
+
+ALTER TABLE ONLY public.active_storage_blobs
+    ADD CONSTRAINT active_storage_blobs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: student_107
+--
+
+ALTER TABLE ONLY public.ar_internal_metadata
+    ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: artworks artworks_pkey; Type: CONSTRAINT; Schema: public; Owner: student_107
+--
+
+ALTER TABLE ONLY public.artworks
+    ADD CONSTRAINT artworks_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: student_107
+--
+
+ALTER TABLE ONLY public.schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: student_107
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_active_storage_attachments_on_blob_id; Type: INDEX; Schema: public; Owner: student_107
+--
+
+CREATE INDEX index_active_storage_attachments_on_blob_id ON public.active_storage_attachments USING btree (blob_id);
+
+
+--
+-- Name: index_active_storage_attachments_uniqueness; Type: INDEX; Schema: public; Owner: student_107
+--
+
+CREATE UNIQUE INDEX index_active_storage_attachments_uniqueness ON public.active_storage_attachments USING btree (record_type, record_id, name, blob_id);
+
+
+--
+-- Name: index_active_storage_blobs_on_key; Type: INDEX; Schema: public; Owner: student_107
+--
+
+CREATE UNIQUE INDEX index_active_storage_blobs_on_key ON public.active_storage_blobs USING btree (key);
+
+
+--
+-- Name: index_artworks_on_user_id; Type: INDEX; Schema: public; Owner: student_107
+--
+
+CREATE INDEX index_artworks_on_user_id ON public.artworks USING btree (user_id);
+
+
+--
+-- Name: artworks fk_rails_aaef929be2; Type: FK CONSTRAINT; Schema: public; Owner: student_107
+--
+
+ALTER TABLE ONLY public.artworks
+    ADD CONSTRAINT fk_rails_aaef929be2 FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
+-- Name: active_storage_attachments fk_rails_c3b3935057; Type: FK CONSTRAINT; Schema: public; Owner: student_107
+--
+
+ALTER TABLE ONLY public.active_storage_attachments
+    ADD CONSTRAINT fk_rails_c3b3935057 FOREIGN KEY (blob_id) REFERENCES public.active_storage_blobs(id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
